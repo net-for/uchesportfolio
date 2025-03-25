@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <section class="hero">
+        <div class="know-more">
+            <span>Ucha Gulbani</span>
+            <a href="#about" class="know-more-link">
+                Know more
+                <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <div class="image-showcase">
+            <div class="showcase-item active" style="--index: 0">
+                <img src="assets/Gallery.png" alt="Gallery">
+            </div>
+            <div class="showcase-item" style="--index: 1">
+                <img src="assets/Dynamic Island.png" alt="Dynamic Island">
+            </div>
+            <div class="showcase-item" style="--index: 2">
+                <img src="assets/image-1.png" alt="Image 1">
+            </div>
+           
+            
+        </div>
+        <div class="showcase-controls">
+            <button class="control-dot active" data-index="0"></button>
+            <button class="control-dot" data-index="1"></button>
+            <button class="control-dot" data-index="2"></button>
+            <button class="control-dot" data-index="3"></button>
+            <button class="control-dot" data-index="4"></button>
+        </div>
+    </section>
+
+    <div class="content-wrapper">
+        <div class="modal" id="contactModal">
+            <div class="modal-content">
+                <button class="modal-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="modal-header">
+                    <span class="modal-label">Book a call</span>
+                    <h2>Drop me a line</h2>
+                </div>
+                <div class="modal-body">
+                    <p>I'm a UI/UX designer in Tbilisi, Georgia, focused on creating seamless digital experiences. Reach out to schedule an introductory call and to know more about pricing and availability.</p>
+                    <div class="contact-info">
+                        <h3>Enquiries and collaborations</h3>
+                        <a href="mailto:Gulbaniucha@gmail.com" class="contact-email">Gulbaniucha@gmail.com</a>
+                    </div>
+                </div>
+                <div class="modal-image">
+                    <img src="assets/profile.png" alt="Profile Image">
+                </div>
+            </div>
+        </div>
+        <section class="about-section">
+            <div class="about-content">
+                <div class="floating-icons-container">
+                    <div class="floating-icon">
+                        <img src="assets/3D Icons.png" alt="3D Icon">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="intro-text">Hi, I'm a UI/UX Designer crafting seamless digital experiences.</p>
+                    <p class="highlight-text">I turn ideas into intuitive, engaging, and beautifully designed products. ✨</p>
+                    <p class="description-text">I collaborate with startups, agencies, and businesses to craft intuitive, high impact products and brands. Whether you're launching something new, refining an existing product, or scaling for the future, I design with purpose creating experiences that feel effortless and look stunning.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worked With Section -->
+        <section class="worked-with-section">
+            <div class="worked-with-container">
+                <h2 class="worked-with-title">Worked With</h2>
+                <div class="company-list">
+                    <div class="company-item">
+                        <div class="company-info">
+                            <img src="assets/wix.png" alt="Wix.com" class="company-logo">
+                            <div>
+                                <div class="company-name">Wix.com</div>
+                                <div class="company-description">The all-in-one website builder</div>
+                            </div>
+                        </div>
+                        <a href="https://wix.com" class="company-link">
+                            <img src="assets/icon.svg" alt="External link" class="link-icon">
+                        </a>
+                    </div>
+
+                    <div class="company-item">
+                        <div class="company-info">
+                            <img src="assets/rora.png" alt="Redberry Rockets" class="company-logo">
+                            <div>
+                                <div class="company-name">Redberry Rockets</div>
+                                <div class="company-description">100+ award-winning digital agency</div>
+                            </div>
+                        </div>
+                        <a href="https://redberry.international" class="company-link">
+                            <img src="assets/icon.svg" alt="External link" class="link-icon">
+                        </a>
+                    </div>
+
+                    <div class="company-item">
+                        <div class="company-info">
+                            <img src="assets/mrkt.png" alt="Mrkt.com" class="company-logo">
+                            <div>
+                                <div class="company-name">Mrkt.com</div>
+                                <div class="company-description">Social Shopping</div>
+                            </div>
+                        </div>
+                        <a href="https://mrkt.com" class="company-link">
+                            <img src="assets/icon.svg" alt="External link" class="link-icon">
+                        </a>
+                    </div>
+
+                    <div class="company-item">
+                        <div class="company-info">
+                            <img src="assets/hugetv.png" alt="Huge.tv" class="company-logo">
+                            <div>
+                                <div class="company-name">Huge.tv</div>
+                                <div class="company-description">The most absurd app</div>
+                            </div>
+                        </div>
+                        <a href="https://huge.tv" class="company-link">
+                            <img src="assets/icon.svg" alt="External link" class="link-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="intro-section">
+            <p class="intro-text">I embed with teams to launch, refine, and rethink digital experiences.</p>
+            <p class="description-text">From new product ideas to full scale redesigns, I craft interfaces that blend usability with brand identity. No off the shelf solutions every project is a unique challenge, built around your vision. Let's create something that not only works but truly stands out.</p>
+
+            <div class="services-section">
+                <div class="service-item">Product Design</div>
+                <div class="service-item">Design Systems</div>
+                <div class="service-item">Application Design</div>
+                <div class="service-item">Web Design</div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <a href="mailto:Gulbaniucha@gmail.com" class="footer-email">Gulbaniucha@gmail.com</a>
+                <div class="footer-social">
+                    <a href="https://dribbble.com/uchagulbani" class="social-link">
+                        <img src="assets/_Dribbble.svg" alt="Dribbble">
+                    </a>
+                    <a href="https://x.com/uchekzzz" class="social-link">
+                        <img src="assets/Social Icons.svg" alt="Twitter">
+                    </a>
+                    <a href="https://www.linkedin.com/in/uchagulbani" class="social-link">
+                        <img src="assets/_Linkedin.svg" alt="LinkedIn">
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p class="copyright">©2025 Ucha Gulbani — All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
