@@ -14,6 +14,9 @@ body {
     color: #1a0d0d;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
 /* Hero Section */
@@ -37,8 +40,9 @@ body {
     background: #000000;
     color: #000;
     overflow: hidden;
-    will-change: transform;
+    will-change: transform, opacity;
     transform-origin: center center;
+    z-index: 1;
 }
 
 .image-showcase.scrolled {
@@ -48,7 +52,7 @@ body {
     width: 100%;
     height: 100vh;
     z-index: 100;
-    border-radius: 20px;
+    border-radius: 20px;    
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -60,7 +64,7 @@ body {
     height: 100%;
     opacity: 0;
     transform: translateX(100%);
-    transition: transform 3s linear, opacity 3s linear;
+    transition: transform 7s linear, opacity 7s linear;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -341,34 +345,26 @@ body {
     top: 0;
     left: 0;
     pointer-events: none;
+    z-index: 1;
 }
 
 .floating-icon {
     position: absolute;
-    width: 600px;
-    height: 600px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: floatInCircle 12s linear infinite;
+    width: 48px;
+    height: 48px;
+    transform: none;
+    animation: none;
 }
 
 .floating-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.25));
 }
 
 @keyframes floatInCircle {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(250px) rotate(0deg) scale(1);
-    }
-    50% {
-        transform: translate(-50%, -50%) rotate(180deg) translateX(250px) rotate(-180deg) scale(1.1);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(250px) rotate(-360deg) scale(1);
+    0%, 100% {
+        transform: none;
     }
 }
 
@@ -853,21 +849,30 @@ body {
     top: 32px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 20px 24px;
-    border-radius: 20px;
+    padding: 20px 28px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     z-index: 100;
+    opacity: 1;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.know-more.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-20px);
 }
 
 .know-more span {
     color: #ffffff;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .know-more-link {
@@ -885,8 +890,8 @@ body {
 }
 
 .arrow-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     transition: transform 0.3s ease;
 }
 
@@ -922,7 +927,7 @@ body {
 }
 
 .modal-content {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.219);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 36px;
@@ -1123,94 +1128,76 @@ body {
     position: relative;
     z-index: 2;
     background: #ffffff;
-    margin-top: 100vh;
+    margin-top: 0;
     padding: 120px 20px;
-    border-radius: 32px 32px 0 0;
-    will-change: transform;
+    will-change: transform, opacity;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .about-content {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
-    padding: 0;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+  
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .about-text {
     position: relative;
     z-index: 2;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.5s;
+    margin: 0;
 }
 
 .intro-text {
     font-size: 18px;
     color: #666666;
-    margin-bottom: 24px;
-    line-height: 1.6;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
 }
 
 .highlight-text {
-    font-size: 48px;
+    font-size: 42px;
     color: #000000;
     font-weight: 500;
-    margin-bottom: 32px;
+    margin-bottom: 0;
     line-height: 1.2;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
 }
 
-.description-text {
-    font-size: 18px;
-    color: #666666;
-    margin-bottom: 0;
-    line-height: 1.6;
+.floating-icons-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .floating-icon {
     position: absolute;
-    width: 280px;
-    height: 280px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: floatInCircle 12s linear infinite;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .about-section {
-        padding: 80px 20px;
-    }
-    
-    .highlight-text {
-        font-size: 36px;
-    }
-    
-    .intro-text,
-    .description-text {
-        font-size: 16px;
-    }
-    
-    .floating-icon {
-        width: 220px;
-        height: 220px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-section {
-        padding: 60px 20px;
-    }
-    
-    .highlight-text {
-        font-size: 28px;
-        margin-bottom: 24px;
-    }
-    
-    .floating-icon {
-        width: 180px;
-        height: 180px;
-    }
+.floating-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Animations */
@@ -1253,11 +1240,11 @@ body {
     }
     
     .highlight-text {
-        font-size: 1.8rem;
+        font-size: 36px;
     }
     
     .intro-text {
-        font-size: 1.3rem;
+        font-size: 20px;
     }
     
     .description-text {
@@ -1276,11 +1263,11 @@ body {
     }
     
     .highlight-text {
-        font-size: 1.5rem;
+        font-size: 32px;
     }
     
     .intro-text {
-        font-size: 1.2rem;
+        font-size: 18px;
     }
     
     .description-text {
@@ -1288,7 +1275,7 @@ body {
     }
     
     .about-section {
-        padding: 3rem 1.5rem;
+        padding: 60px 20px;
     }
     
     .floating-icon {
@@ -1298,8 +1285,10 @@ body {
 }
 
 .worked-with-section {
-    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
     background: #ffffff;
+    padding-top: 0;
 }
 
 .worked-with-container {
@@ -1328,8 +1317,7 @@ body {
     justify-content: space-between;
     padding: 24px;
     background: transparent;
-    border-radius: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
     transition: all 0.3s ease;
 }
 
@@ -1408,4 +1396,8 @@ body {
     .company-description {
         font-size: 0.85rem;
     }
+}
+
+html {
+    scroll-behavior: smooth;
 }

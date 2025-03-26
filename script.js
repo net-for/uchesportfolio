@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showcaseItems = document.querySelectorAll('.showcase-item');
     let currentIndex = 0;
-    const transitionSpeed = 3000; // Increased from 1500 to 2000 milliseconds
+    const transitionSpeed = 7000; // Increased from 1500 to 2000 milliseconds
 
     // Preload all images for smooth playback
     function preloadImages() {
@@ -129,46 +129,94 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 
     // Smooth scroll handling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+    let lastScrollY = window.scrollY;
+    let currentTranslateY = 0;
+    let targetTranslateY = 0;
+    let scrollVelocity = 0;
+    let animationFrame;
 
-            // Update navigation active state
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
-    // Floating elements animation
-    const floatingIcons = document.querySelector('.floating-icons');
-    const createFloatingIcon = () => {
-        const icon = document.createElement('img');
-        icon.src = 'assets/3D Icons.png';
-        icon.alt = '3D Icon';
-        icon.classList.add('floating-element');
-        icon.style.left = Math.random() * 100 + '%';
-        icon.style.top = Math.random() * 100 + '%';
-        icon.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-        icon.style.opacity = Math.random() * 0.5 + 0.3;
-        floatingIcons.appendChild(icon);
-
-        // Remove icon after animation
-        setTimeout(() => {
-            icon.remove();
-        }, 6000);
-    };
-
-    // Create initial floating icons
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingIcon, i * 1000);
+    function lerp(start, end, factor) {
+        return start + (end - start) * factor;
     }
 
-    // Continuously create new floating icons
-    setInterval(createFloatingIcon, 3000);
+    function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    }
+
+    function smoothScroll() {
+        const imageShowcase = document.querySelector('.image-showcase');
+        const aboutSection = document.querySelector('.about-section');
+        const knowMore = document.querySelector('.know-more');
+        
+        // Calculate scroll velocity
+        const scrollDelta = window.scrollY - lastScrollY;
+        scrollVelocity = clamp(scrollDelta, -50, 50);
+        
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = clamp(window.scrollY / window.innerHeight, 0, 1);
+        
+        // Calculate target position with dynamic parallax factor
+        const baseParallaxFactor = 0.5;
+        const velocityFactor = Math.abs(scrollVelocity) / 50;
+        const dynamicParallaxFactor = baseParallaxFactor + (velocityFactor * 0.1);
+        
+        targetTranslateY = -window.scrollY * dynamicParallaxFactor;
+        
+        // Smooth transition using lerp with variable smoothness
+        const baseSmoothFactor = 0.1;
+        const velocitySmoothFactor = velocityFactor * 0.05;
+        const smoothFactor = baseSmoothFactor + velocitySmoothFactor;
+        
+        currentTranslateY = lerp(currentTranslateY, targetTranslateY, smoothFactor);
+        
+        // Apply transforms with eased values
+        if (scrollProgress <= 1) {
+            const scale = 1 - (scrollProgress * 0.15);
+            const opacity = 1 - (scrollProgress * 1.2);
+            imageShowcase.style.transform = `translate3d(0, ${currentTranslateY}px, 0) scale(${scale})`;
+            imageShowcase.style.opacity = opacity;
+            
+            // Show know-more button only in showcase
+            if (knowMore) {
+                knowMore.classList.remove('hidden');
+            }
+        }
+        
+        // Hide know-more button when scrolled past showcase
+        if (scrollProgress > 0.5 && knowMore) {
+            knowMore.classList.add('hidden');
+        }
+        
+        // Update about section with smooth transition
+        if (aboutSection) {
+            const aboutProgress = clamp((window.scrollY - window.innerHeight * 0.5) / (window.innerHeight * 0.5), 0, 1);
+            const translateY = lerp(100, 0, aboutProgress);
+            const aboutOpacity = lerp(0, 1, aboutProgress);
+            
+            aboutSection.style.transform = `translateY(${translateY}px)`;
+            aboutSection.style.opacity = aboutOpacity;
+        }
+        
+        lastScrollY = window.scrollY;
+        animationFrame = requestAnimationFrame(smoothScroll);
+    }
+
+    // Optimized scroll handler with debounce
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!animationFrame) {
+            animationFrame = requestAnimationFrame(smoothScroll);
+        }
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+        }, 150);
+    }, { passive: true });
+
+    // Initialize scroll position
+    smoothScroll();
 
     // FAQ Accordion functionality
     const faqItems = document.querySelectorAll('.faq-item');
@@ -257,88 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Enhanced Smooth Scroll Animation
-    const imageShowcase = document.querySelector('.image-showcase');
-    const aboutSection = document.querySelector('.about-section');
-    const aboutContent = document.querySelector('.about-content');
-    
-    let lastScrollY = window.scrollY;
-    let currentTranslateY = 0;
-    let targetTranslateY = 0;
-    let scrollVelocity = 0;
-    let animationFrame;
-    let scrollProgress = 0;
-
-    function lerp(start, end, factor) {
-        return start + (end - start) * factor;
-    }
-
-    function clamp(value, min, max) {
-        return Math.min(Math.max(value, min), max);
-    }
-
-    function smoothScroll() {
-        // Calculate scroll velocity
-        const scrollDelta = window.scrollY - lastScrollY;
-        scrollVelocity = clamp(scrollDelta, -50, 50);
-        
-        // Calculate scroll progress (0 to 1)
-        scrollProgress = clamp(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight), 0, 1);
-        
-        // Calculate target position with dynamic parallax factor
-        const baseParallaxFactor = 0.5; // Reduced from 0.65 to match character.studio
-        const velocityFactor = Math.abs(scrollVelocity) / 50;
-        const dynamicParallaxFactor = baseParallaxFactor + (velocityFactor * 0.1);
-        
-        targetTranslateY = -window.scrollY * dynamicParallaxFactor;
-        
-        // Smooth transition using lerp with variable smoothness
-        const baseSmoothFactor = 0.08; // Reduced for smoother animation
-        const velocitySmoothFactor = velocityFactor * 0.04;
-        const smoothFactor = baseSmoothFactor + velocitySmoothFactor;
-        
-        currentTranslateY = lerp(currentTranslateY, targetTranslateY, smoothFactor);
-        
-        // Apply transform with eased value
-        const scale = 1 + (scrollProgress * 0.1); // Subtle scale effect
-        imageShowcase.style.transform = `translate3d(0, ${currentTranslateY}px, 0) scale(${scale})`;
-        
-        // Update about section
-        if (window.scrollY > window.innerHeight * 0.5) {
-            aboutSection.style.transform = `translateY(${-window.innerHeight * 0.4}px)`;
-        } else {
-            aboutSection.style.transform = 'translateY(0)';
-        }
-        
-        // Show about content when it comes into view
-        const aboutRect = aboutSection.getBoundingClientRect();
-        if (aboutRect.top < window.innerHeight * 0.8) {
-            aboutContent.classList.add('visible');
-        }
-        
-        lastScrollY = window.scrollY;
-        
-        // Continue animation
-        animationFrame = requestAnimationFrame(smoothScroll);
-    }
-
-    // Optimized scroll handler with debounce
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (!animationFrame) {
-            animationFrame = requestAnimationFrame(smoothScroll);
-        }
-        
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            cancelAnimationFrame(animationFrame);
-            animationFrame = null;
-        }, 150);
-    }, { passive: true });
-
-    // Initialize scroll position
-    smoothScroll();
-
     // Add smooth mouse parallax effect
     let mouseX = 0;
     let mouseY = 0;
@@ -365,4 +331,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateMouseParallax();
+
+    // Floating icons mouse parallax effect
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        floatingIcons.forEach((icon, index) => {
+            const factor = (index + 1) * 0.2;
+            const x = mouseX * 20 * factor;
+            const y = mouseY * 20 * factor;
+            
+            icon.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+
+    // Reset position on mouse leave
+    document.addEventListener('mouseleave', () => {
+        floatingIcons.forEach(icon => {
+            icon.style.transform = 'translate(0, 0)';
+        });
+    });
 });
