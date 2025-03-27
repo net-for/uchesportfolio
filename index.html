@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/profile.png">
+    <title>Ucha Gulbani</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -12,21 +13,31 @@
         <div class="know-more">
             <span>Ucha Gulbani</span>
             <a href="#" class="know-more-link">
-                Know more
-                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                Know more 
+                <img src="assets/arrow.png" alt="Arrow" class="arrow-icon">
             </a>
         </div>
         <div class="image-showcase">
             <div class="showcase-item active" style="--index: 0">
-                <img src="assets/Gallery.png" alt="Gallery">
+                <img src="assets/pirveli.png" alt="Gallery">
             </div>
             <div class="showcase-item" style="--index: 1">
-                <img src="assets/Dynamic Island.png" alt="Dynamic Island">
+                <img src="assets/meore.png" alt="Dynamic Island">
             </div>
             <div class="showcase-item" style="--index: 2">
-                <img src="assets/image-1.png" alt="Image 1">
+                <img src="assets/mesame.png" alt="Image 1">
+            </div>
+            <div class="showcase-item" style="--index: 3">
+                <img src="assets/meotxe.png" alt="Image 1">
+            </div>
+            <div class="showcase-item" style="--index: 4">
+                <img src="assets/mexute.png" alt="Image 1">
+            </div>
+            <div class="showcase-item" style="--index: 5">
+                <img src="assets/meekvse.png" alt="Image 1">
+            </div>
+            <div class="showcase-item" style="--index: 6">
+                <img src="assets/meshvide.png" alt="Image 1">
             </div>
            
             
@@ -42,9 +53,7 @@
         <div class="modal" id="contactModal">
             <div class="modal-content">
                 <button class="modal-close">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="assets/x.png" alt="Close">
                 </button>
                 <div class="modal-header">
                     <span class="modal-label">Book a call</span>
@@ -65,14 +74,17 @@
         <section class="about-section">
             <div class="about-content">
                 <div class="floating-icons-container">
-                    <div class="floating-icon" style="top: 10%; left: 10%;">
-                        <img src="assets/3D Icons.png" alt="Heart Icon">
+                    <div class="floating-icon heart-icon">
+                        <img src="assets/Heart 3D.png" alt="Heart 3D">
                     </div>
-                    <div class="floating-icon" style="top: 5%; right: 15%;">
-                        <img src="assets/3D Icons.png" alt="Cursor Icon">
+                    <div class="floating-icon toggle-icon">
+                        <img src="assets/Toggle 3D.png" alt="Toggle 3D">
                     </div>
-                    <div class="floating-icon" style="bottom: 40%; left: 25%;">
-                        <img src="assets/3D Icons.png" alt="3D Cube Icon">
+                    <div class="floating-icon rubick-icon">
+                        <img src="assets/Rubick 3D.png" alt="Rubick 3D">
+                    </div>
+                    <div class="floating-icon mouse-icon">
+                        <img src="assets/Mouse 3D.png" alt="Mouse 3D">
                     </div>
                 </div>
                 <div class="about-text">
@@ -87,7 +99,7 @@
             <div class="worked-with-container">
                 <h2 class="worked-with-title">Worked With</h2>
                 <div class="company-list">
-                    <div class="company-item">
+                    <a href="https://wix.com" class="company-item">
                         <div class="company-info">
                             <img src="assets/wix.png" alt="Wix.com" class="company-logo">
                             <div>
@@ -95,12 +107,12 @@
                                 <div class="company-description">The all-in-one website builder</div>
                             </div>
                         </div>
-                        <a href="https://wix.com" class="company-link">
-                            <img src="assets/icon.svg" alt="External link" class="link-icon">
-                        </a>
-                    </div>
+                        <div class="company-link">
+                            <img src="assets/link.svg" alt="External link" class="link-icon">
+                        </div>
+                    </a>
 
-                    <div class="company-item">
+                    <a href="https://redberry.international" class="company-item">
                         <div class="company-info">
                             <img src="assets/rora.png" alt="Redberry Rockets" class="company-logo">
                             <div>
@@ -108,12 +120,12 @@
                                 <div class="company-description">100+ award-winning digital agency</div>
                             </div>
                         </div>
-                        <a href="https://redberry.international" class="company-link">
-                            <img src="assets/icon.svg" alt="External link" class="link-icon">
-                        </a>
-                    </div>
+                        <div class="company-link">
+                            <img src="assets/link.svg" alt="External link" class="link-icon">
+                        </div>
+                    </a>
 
-                    <div class="company-item">
+                    <a href="https://mrkt.com" class="company-item">
                         <div class="company-info">
                             <img src="assets/mrkt.png" alt="Mrkt.com" class="company-logo">
                             <div>
@@ -121,12 +133,12 @@
                                 <div class="company-description">Social Shopping</div>
                             </div>
                         </div>
-                        <a href="https://mrkt.com" class="company-link">
-                            <img src="assets/icon.svg" alt="External link" class="link-icon">
-                        </a>
-                    </div>
+                        <div class="company-link">
+                            <img src="assets/link.svg" alt="External link" class="link-icon">
+                        </div>
+                    </a>
 
-                    <div class="company-item">
+                    <a href="https://huge.tv" class="company-item">
                         <div class="company-info">
                             <img src="assets/hugetv.png" alt="Huge.tv" class="company-logo">
                             <div>
@@ -134,10 +146,10 @@
                                 <div class="company-description">The most absurd app</div>
                             </div>
                         </div>
-                        <a href="https://huge.tv" class="company-link">
-                            <img src="assets/icon.svg" alt="External link" class="link-icon">
-                        </a>
-                    </div>
+                        <div class="company-link">
+                            <img src="assets/link.svg" alt="External link" class="link-icon">
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

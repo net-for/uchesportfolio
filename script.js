@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-        slides[index].classList.add('active');
         dots[index].classList.add('active');
     }
 
@@ -271,11 +270,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        
+        // Add animation class to contact-email after a small delay
+        setTimeout(() => {
+            const contactEmail = modal.querySelector('.contact-email');
+            if (contactEmail) {
+                contactEmail.classList.add('animate');
+            }
+        }, 600); // Delay to match modal opening animation
     }
 
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Remove animation class when modal closes
+        const contactEmail = modal.querySelector('.contact-email');
+        if (contactEmail) {
+            contactEmail.classList.remove('animate');
+        }
     }
 
     knowMoreLink.addEventListener('click', function(e) {
@@ -354,4 +367,20 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.style.transform = 'translate(0, 0)';
         });
     });
+
+    // Email underline animation on scroll (only for footer)
+    const footerEmail = document.querySelector('.footer-email');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, {
+        threshold: 1.0
+    });
+
+    if (footerEmail) {
+        observer.observe(footerEmail);
+    }
 });
