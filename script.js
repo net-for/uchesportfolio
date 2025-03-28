@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Subtle parallax effect
+    // Subtle parallax effect - disabled
+    // Original code kept for reference but not applied
+    /*
     document.addEventListener('mousemove', (e) => {
         const activeItem = document.querySelector('.showcase-item.active img');
         if (!activeItem) return;
@@ -94,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeItem.style.transform = `scale(1.02) translate(${xAxis}px, ${yAxis}px)`;
     });
+    */
 
     // Reset transform on mouse leave
     document.addEventListener('mouseleave', () => {
@@ -146,38 +149,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const aboutSection = document.querySelector('.about-section');
         const knowMore = document.querySelector('.know-more');
         
-        // Calculate scroll velocity
+        // Calculate scroll velocity with improved smoothing
         const scrollDelta = window.scrollY - lastScrollY;
-        scrollVelocity = clamp(scrollDelta, -50, 50);
+        scrollVelocity = clamp(scrollDelta, -30, 30); // Reduced range for smoother effect (character.studio style)
         
         // Calculate scroll progress (0 to 1)
         const scrollProgress = clamp(window.scrollY / window.innerHeight, 0, 1);
         
-        // Calculate target position with dynamic parallax factor
-        const baseParallaxFactor = 0.5;
-        const velocityFactor = Math.abs(scrollVelocity) / 50;
-        const dynamicParallaxFactor = baseParallaxFactor + (velocityFactor * 0.1);
+        // Calculate target position with improved parallax factor (character.studio style)
+        const baseParallaxFactor = 0.15; // Reduced for smoother effect like character.studio
+        const velocityFactor = Math.abs(scrollVelocity) / 80; // Adjusted divisor for smoother effect
+        const dynamicParallaxFactor = baseParallaxFactor + (velocityFactor * 0.02); // Reduced influence
         
+        // Ensure targetTranslateY returns to 0 when scrolling back to top
         targetTranslateY = -window.scrollY * dynamicParallaxFactor;
         
-        // Smooth transition using lerp with variable smoothness
-        const baseSmoothFactor = 0.1;
-        const velocitySmoothFactor = velocityFactor * 0.05;
+        // Enhanced smooth transition using improved lerp with variable smoothness
+        const baseSmoothFactor = 0.08; // Adjusted for character.studio style
+        const velocitySmoothFactor = velocityFactor * 0.01; // Reduced influence
         const smoothFactor = baseSmoothFactor + velocitySmoothFactor;
         
-        currentTranslateY = lerp(currentTranslateY, targetTranslateY, smoothFactor);
-        
-        // Apply transforms with eased values
+        // Apply transforms with eased values - keeping opacity at 1 (no transparency)
         if (scrollProgress <= 1) {
-            const scale = 1 - (scrollProgress * 0.15);
-            const opacity = 1 - (scrollProgress * 1.2);
+            // Reduced scale change for subtler effect with improved easing (character.studio style)
+            const scale = 1 - (scrollProgress * 0.04); // Reduced scale change for more subtle effect
+            // Apply smoother transform with cubic-bezier easing
+            currentTranslateY = lerp(currentTranslateY, targetTranslateY, smoothFactor);
+            // Keep opacity at 1 to prevent transparency
             imageShowcase.style.transform = `translate3d(0, ${currentTranslateY}px, 0) scale(${scale})`;
-            imageShowcase.style.opacity = opacity;
+            imageShowcase.style.opacity = 1; // Always fully visible
             
             // Show know-more button only in showcase
             if (knowMore) {
                 knowMore.classList.remove('hidden');
             }
+        } else {
+            // When scrolled past the first viewport, ensure the showcase is properly positioned
+            currentTranslateY = lerp(currentTranslateY, targetTranslateY, smoothFactor);
+            imageShowcase.style.transform = `translate3d(0, ${currentTranslateY}px, 0) scale(0.96)`;
         }
         
         // Hide know-more button when scrolled past showcase
@@ -185,13 +194,20 @@ document.addEventListener('DOMContentLoaded', () => {
             knowMore.classList.add('hidden');
         }
         
-        // Update about section with smooth transition
+        // Update about section with enhanced smooth transition (character.studio style)
         if (aboutSection) {
-            const aboutProgress = clamp((window.scrollY - window.innerHeight * 0.5) / (window.innerHeight * 0.5), 0, 1);
-            const translateY = lerp(100, 0, aboutProgress);
+            // Improved about section animation with character.studio style
+            // Start animation earlier to avoid empty space
+            const aboutProgress = clamp((window.scrollY - window.innerHeight * 0.25) / (window.innerHeight * 0.65), 0, 1);
+            const translateY = lerp(40, 0, aboutProgress); // Reduced initial offset
             const aboutOpacity = lerp(0, 1, aboutProgress);
             
-            aboutSection.style.transform = `translateY(${translateY}px)`;
+            // Add subtle scale effect for more depth with improved easing (character.studio style)
+            const scale = lerp(0.98, 1, aboutProgress); // Less scale change for subtler effect
+            
+            // Apply smoother transform with cubic-bezier easing similar to character.studio
+            aboutSection.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            aboutSection.style.transform = `translateY(${translateY}px) scale(${scale})`;
             aboutSection.style.opacity = aboutOpacity;
         }
         
@@ -199,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animationFrame = requestAnimationFrame(smoothScroll);
     }
 
-    // Optimized scroll handler with debounce
+    // Optimized scroll handler with improved debounce (character.studio style)
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (!animationFrame) {
@@ -208,9 +224,26 @@ document.addEventListener('DOMContentLoaded', () => {
         
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
-            cancelAnimationFrame(animationFrame);
-            animationFrame = null;
-        }, 150);
+            // Don't cancel animation frame immediately to ensure smooth return to top
+            // This helps prevent the empty space issue when scrolling back up
+            if (window.scrollY === 0) {
+                // When at the top, ensure everything is reset properly
+                const imageShowcase = document.querySelector('.image-showcase');
+                if (imageShowcase) {
+                    currentTranslateY = 0;
+                    targetTranslateY = 0;
+                    imageShowcase.style.transform = 'translate3d(0, 0px, 0) scale(1)';
+                }
+            }
+            
+            // Only cancel animation after ensuring proper positioning
+            setTimeout(() => {
+                if (animationFrame && window.scrollY === 0) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+            }, 100);
+        }, 200);
     }, { passive: true });
 
     // Initialize scroll position
@@ -330,14 +363,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateMouseParallax() {
-        currentMouseX = lerp(currentMouseX, mouseX, 0.05);
-        currentMouseY = lerp(currentMouseY, mouseY, 0.05);
+        // Disabled mouse parallax effect for images as requested
+        // Original code kept for reference but not applied
+        // currentMouseX = lerp(currentMouseX, mouseX, 0.05);
+        // currentMouseY = lerp(currentMouseY, mouseY, 0.05);
         
         const activeItem = document.querySelector('.showcase-item.active img');
         if (activeItem) {
-            const translateX = currentMouseX * 20;
-            const translateY = currentMouseY * 20;
-            activeItem.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(1.05)`;
+            // Fixed transform with no mouse movement, only scale
+            activeItem.style.transform = `translate3d(0px, 0px, 0) scale(1.05)`;
         }
         
         requestAnimationFrame(updateMouseParallax);
@@ -345,9 +379,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateMouseParallax();
 
-    // Floating icons mouse parallax effect
+    // Floating icons mouse parallax effect - disabled
     const floatingIcons = document.querySelectorAll('.floating-icon');
     
+    // Disabled mouse movement effect for floating icons
+    // Original code kept for reference but not applied
+    /*
     document.addEventListener('mousemove', (e) => {
         const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
         const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -360,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.style.transform = `translate(${x}px, ${y}px)`;
         });
     });
+    */
 
     // Reset position on mouse leave
     document.addEventListener('mouseleave', () => {
