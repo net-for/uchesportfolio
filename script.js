@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
     }
 
     dots.forEach((dot, index) => {
@@ -266,25 +265,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContent = modal.querySelector('.modal-content');
     const knowMoreLink = document.querySelector('.know-more-link');
     const closeButton = document.querySelector('.modal-close');
+    const knowMoreButton = document.querySelector('.know-more');
 
     function openModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        knowMoreButton.classList.add('hidden');
         
-        // Add animation class to contact-email after a small delay
+        // Start email animation after modal opens
         setTimeout(() => {
             const contactEmail = modal.querySelector('.contact-email');
             if (contactEmail) {
                 contactEmail.classList.add('animate');
             }
-        }, 600); // Delay to match modal opening animation
+        }, 600);
     }
 
     function closeModal() {
         modal.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        // Remove animation class when modal closes
+        document.body.style.overflow = 'auto';
+        knowMoreButton.classList.remove('hidden');
         const contactEmail = modal.querySelector('.contact-email');
         if (contactEmail) {
             contactEmail.classList.remove('animate');
