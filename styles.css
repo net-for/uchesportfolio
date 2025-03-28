@@ -64,8 +64,8 @@ body {
     height: 100%;
     opacity: 0;
     transform: translateX(100%);
-    transition: transform 7s linear, opacity 8s linear;
-    display: fixed;
+    transition: transform 7s linear, opacity 7s linear;
+    display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -355,7 +355,6 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 1;
-   overflow: visible;
 }
 
 .floating-icon {
@@ -1045,7 +1044,7 @@ body {
 }
 
 .contact-email {
-    font-size: 16px;
+    font-size: 24px;
     color: #fff;
     text-decoration: none;
     position: relative;
@@ -1150,7 +1149,9 @@ body {
     cursor: default;
 }
 
-
+.service-item:last-child {
+    border-bottom: none;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1204,13 +1205,12 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 1;
-    overflow: visible;
 }
 
 .floating-icon {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     transition: transform 0.3s ease;
 }
 
@@ -1221,28 +1221,28 @@ body {
 }
 
 .heart-icon {
-    top: 10%;
-    left: 5%;
+    top: 5%;
+    left: 15%;
     animation: float 6s ease-in-out infinite;
 }
 
 .toggle-icon {
     top: 10%;
-    right: 5%;
+    right: 15%;
     animation: float 6s ease-in-out infinite;
     animation-delay: -1.5s;
 }
 
 .rubick-icon {
-    bottom: 10%;
-    left: 5%;
+    bottom: 15%;
+    left: 25%;
     animation: float 6s ease-in-out infinite;
     animation-delay: -3s;
 }
 
 .mouse-icon {
-    bottom: 10%;
-    right: 5%;
+    bottom: 20%;
+    right: 20%;
     animation: float 6s ease-in-out infinite;
     animation-delay: -4.5s;
 }
@@ -1282,8 +1282,8 @@ body {
 
 @media (max-width: 768px) {
     .floating-icon {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
     
     .highlight-text {
@@ -1371,31 +1371,6 @@ body {
     
     .about-section {
         padding: 60px 20px;
-    }
-    
-    .floating-icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .heart-icon {
-        top: -30px;
-        left: 5%;
-    }
-    
-    .toggle-icon {
-        top: -40px;
-        right: 5%;
-    }
-    
-    .rubick-icon {
-        bottom: -30px;
-        left: 10%;
-    }
-    
-    .mouse-icon {
-        bottom: -40px;
-        right: 10%;
     }
     
     .floating-icon {
