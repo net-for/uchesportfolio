@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         once: true
     });
 
+
     const showcaseItems = document.querySelectorAll('.showcase-item');
     let currentIndex = 0;
     const transitionSpeed = 7000; // Increased from 1500 to 2000 milliseconds
