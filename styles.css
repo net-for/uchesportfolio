@@ -44,7 +44,7 @@ body {
 }
 
 .floating-icon {
-    position: absolute;
+    
     width: 80px;
     height: 80px;
     animation: float 6s ease-in-out infinite;
@@ -57,14 +57,14 @@ body {
 }
 
 .heart-icon {
-    top: -20px;
-    left: 15%;
+    top: 1px;
+    left: 100%;
     animation-delay: 0s;
 }
 
 .toggle-icon {
-    top: 10%;
-    right: 10%;
+    top: 1%;
+    right: 1%;
     animation-delay: 1s;
 }
 
@@ -142,7 +142,7 @@ body {
 /* Image Showcase */
 .image-showcase {
     width: 100%;
-    height: 100vh;
+    height: 984px;
     position: relative;
     background: #000000;
     color: #000;
@@ -168,7 +168,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 984px;
     opacity: 1;
     transform: translateX(100%);
     transition: transform 7s linear, opacity 10s linear;
@@ -969,13 +969,14 @@ body {
 }
 
 .footer {
-    padding: 1px;
+    padding: 1px 1px;
     background: #fff;
     border-top: 1px solid rgb(255, 255, 255);
     min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .footer-content {
@@ -985,7 +986,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px; /* Reduced from 40px to bring elements closer */
 }
 
 .footer-email {
@@ -1017,6 +1018,8 @@ body {
     display: flex;
     gap: 24px;
     align-items: center;
+    margin-bottom: 10px; /* Added margin to position closer to copyright */
+    margin-top: 10px; /* Reduced from 30px */
 }
 
 .social-link {
@@ -1027,6 +1030,8 @@ body {
     height: 24px;
     opacity: 0.6;
     transition: all 0.3s ease;
+    margin-top: 30px;
+    
 }
 
 .social-link:hover {
@@ -1041,11 +1046,15 @@ body {
 
 .footer-bottom {
     text-align: center;
+    margin-top: 5px; /* Reduced from 20px to bring copyright closer to icons */
+    padding: 5px 0; /* Reduced padding */
 }
 
 .copyright {
     color: rgba(0, 0, 0, 0.6);
     font-size: 20px;
+    margin-bottom: 1%;
+    margin-top: 5px; /* Added to create some space from icons */
 }
 
 @media (max-width: 768px) {
@@ -1340,6 +1349,39 @@ body {
     opacity: 0;
 }
 
+
+.faded {
+    font-size: 30px;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: rgba(0, 0, 0, 0.5); /* ნაკლებად ხილვადი შავი ფერი */
+    animation: fadeInUp 0.8s ease-out forwards;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  
+  .highlighted {
+    font-size: 30px;
+   
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: black; /* ნორმალური შავი ფერი */
+    animation: fadeInUp 0.8s ease-out forwards;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+  
+
+
+.description-text2 {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 24px;
+    line-height: 1;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
 .services-section {
     display: flex;
     flex-direction: column;
@@ -1401,6 +1443,15 @@ body {
     will-change: transform;
 }
 
+.text-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
 .floating-icons-container {
     position: absolute;
     width: 100%;
@@ -1408,14 +1459,14 @@ body {
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1; /* რათა ტექსტი ზემოთ იყოს */
 }
 
 .floating-icon {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    transition: transform 0.3s ease;
+    position: absolute; /* ფიქსირებულის ნაცვლად */
+    width: 100px;
+    height: 100px;
+    animation: floatAndRotate 8s ease-in-out infinite;
 }
 
 .floating-icon img {
@@ -1425,30 +1476,23 @@ body {
 }
 
 .heart-icon {
-    top: 5%;
-    left: 20%;
-    animation: floatAndRotate 8s ease-in-out infinite;
+    top: 10%;
+    left: 10%;
 }
 
 .toggle-icon {
-    top: 10%;
-    right: 25%;
-    animation: floatAndRotate 8s ease-in-out infinite;
-    animation-delay: -2s;
+    top: 1%;
+    right: 15%;
 }
 
 .rubick-icon {
-    top: 75%;
+    bottom: 80%;
     left: 30%;
-    animation: floatAndRotate 8s ease-in-out infinite;
-    animation-delay: -4s;
 }
 
 .mouse-icon {
-    top: 65%;
-    right: 25%;
-    animation: floatAndRotate 8s ease-in-out infinite;
-    animation-delay: -6s;
+    bottom: 10%;
+    right: 10%;
 }
 
 .about-highlight {
@@ -1632,7 +1676,7 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding-left: 24px;
+    padding-left: 16px;
 }
 
 .company-list {
@@ -1645,11 +1689,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px;
+    padding: 16px;
     background: transparent;
     transition: all 0.3s ease;
     text-decoration: none;
-    gap: 8px;
+    gap: 1px;
     cursor: pointer;
 }
 
