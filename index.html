@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="უჩა გულბანი - UI/UX დიზაინერი.">
+    <meta property="og:title" content="UCHA GULBANI - UI/UX Designer">
+    <meta property="og:description" content="უჩა გულბანი - UI/UX დიზაინერი. პროფესიონალური პროექტები.">
+    <meta property="og:image" content="assets/Logo.svg">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="assets/Logo.svg">
     <title>UCHA GULBANI - UI/UX Designer</title>
     <style>
         * {
@@ -30,33 +36,40 @@
             align-items: center;
             padding: clamp(1rem, 5vw, 2rem) clamp(1rem, 5vw, 3rem);
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .logo img {
             width: clamp(32px, 5vw, 42px);
             height: clamp(32px, 5vw, 42px);
             border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: clamp(1rem, 2vw, 2rem);
             background: rgba(32, 32, 32, 0.95);
             backdrop-filter: blur(10px);
-            padding: 12px 24px;
+            padding: clamp(0.6rem, 1.5vw, 12px) clamp(1.2rem, 3vw, 24px);
             border-radius: 100px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             animation: fadeIn 0.8s ease-out 1s both;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 15px;
+            font-size: clamp(0.875rem, 2vw, 15px);
             transition: all 0.3s ease;
             white-space: nowrap;
             position: relative;
-            padding: 4px 8px;
+            padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.8rem);
         }
 
         .nav-links a::after {
@@ -92,7 +105,7 @@
         }
 
         .hero h1 {
-            font-size: 7.5rem;
+            font-size: clamp(2.5rem, 15vw, 11rem);
             font-weight: 700;
             letter-spacing: -0.05em;
             margin-bottom: 1.5rem;
@@ -122,6 +135,10 @@
             pointer-events: none;
             overflow: visible;
             z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .floating-objects img {
@@ -130,57 +147,61 @@
             transform-style: preserve-3d;
             backface-visibility: hidden;
             will-change: transform;
+            width: clamp(80px, 12vw, 175px);
         }
 
         #heart-3d {
-            left: 12%;
-            top: 33%;
-            width: 120px;
+            left: clamp(5%, 20%, 25%);
+            top: clamp(50%, 65%, 70%);
+            width: 115px;
             animation: float 8s ease-in-out infinite, fadeIn 1s ease-out 0.2s both;
             transform-origin: center center;
-            filter: drop-shadow(0 0 20px rgba(255, 100, 255, 0.3));
+           
             z-index: 3;
-            transition: filter 0.5s ease, transform 0.3s ease;
         }
 
         #rubick-3d {
-            right: 15%;
-            left: auto;
-            top: 15%;
-            width: 130px;
+            right: clamp(5%, 28%, 35%);
+            top: clamp(20%, 25%, 30%);
+            width: 115px;
             animation: float 9s ease-in-out infinite, fadeIn 1s ease-out 0.4s both;
             animation-delay: -2s, 0.4s;
             transform-origin: center center;
-            filter: drop-shadow(0 0 25px rgba(100, 255, 100, 0.3));
+            
             z-index: 3;
-            transition: filter 0.5s ease, transform 0.3s ease;
         }
 
         #mouse-3d {
-            right: 18%;
-            left: auto;
-            bottom: 20%;
-            top: auto;
-            width: 130px;
+            right: clamp(5%, 25%, 30%);
+            bottom: clamp(15%, 20%, 25%);
+            width: 115px;
             animation: float 10s ease-in-out infinite, fadeIn 1s ease-out 0.6s both;
             animation-delay: -1s, 0.6s;
             transform-origin: center center;
-            filter: drop-shadow(0 0 25px rgba(100, 100, 255, 0.3));
+            
             z-index: 3;
-            transition: filter 0.5s ease, transform 0.3s ease;
         }
 
         #toggle-3d {
-            left: 15%;
-            bottom: 16%;
-            top: auto;
-            width: 120px;
+            left: clamp(5%, 30%, 35%);
+            top: clamp(15%, 22%, 25%);
+            width: 115px;
             animation: float 11s ease-in-out infinite, fadeIn 1s ease-out 0.8s both;
             animation-delay: -3s, 0.8s;
             transform-origin: center center;
-            filter: drop-shadow(0 0 25px rgba(255, 255, 100, 0.3));
+            
             z-index: 3;
-            transition: filter 0.5s ease, transform 0.3s ease;
+        }
+        
+        #bombi {
+            left: calc(25% + 10vw);
+            bottom: clamp(10%, 15%, 20%);
+            width: 115px;
+            animation: float 11s ease-in-out infinite, fadeIn 1s ease-out 0.8s both;
+            animation-delay: -3s, 0.8s;
+            transform-origin: center center;
+            
+            z-index: 3;
         }
 
         .works {
@@ -254,8 +275,8 @@
 
         .work-tags {
             position: absolute;
+            top: 8.5rem;
             right: 0;
-            top: 4rem;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -266,9 +287,9 @@
 
         .work-tag {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
+            font-size: 13px;
             background: rgb(30, 30, 30);
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 100px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -314,7 +335,7 @@
 
         .work-item:hover .work-tag {
             background: rgba(60, 60, 60, 0.95);
-            transform: translateX(-10px);
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -386,7 +407,6 @@
             height: 400px;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(50, 50, 50, 0.3) 0%, transparent 70%);
             z-index: -1;
         }
 
@@ -406,7 +426,7 @@
             align-items: center;
             justify-content: center;
             padding: 14px 32px;
-            background: transparent;
+            background: #000;
             border: 1px solid rgb(255, 255, 255);
             border-radius: 100px;
             color: #fff;
@@ -434,7 +454,7 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.1),
+                rgb(255, 255, 255),
                 transparent
             );
             background-size: 200% 100%;
@@ -466,11 +486,11 @@
         }
 
         .book-call:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: #fff;
+            color: #000;
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
         .elsewhere {
             color: rgba(255, 255, 255, 0.4);
             font-size: 16px;
@@ -519,8 +539,8 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 60px;
-            height: 60px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -576,11 +596,11 @@
         }
 
         .about-modal-close {
-            align-self: flex-end;
+            align-self: flex-start;
             background: transparent;
             border: 1px solid rgba(0, 0, 0, 0.1);
             color: #000;
-            border-radius: 100px;
+            border-radius: 80px;
             padding: clamp(0.4rem, 1vw, 0.5rem) clamp(1rem, 3vw, 1.5rem);
             cursor: pointer;
             font-size: clamp(0.8rem, 2vw, 0.9rem);
@@ -589,8 +609,9 @@
         }
 
         .about-modal-close:hover {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.822);
             transform: translateY(-2px);
+            color: #fff;
         }
 
         .about-modal p {
@@ -621,8 +642,8 @@
 
         .about-modal-logos img {
             height: auto;
-            width: clamp(40px, 10vw, 64px);
-            opacity: 0.8;
+            width: clamp(40px, 10vw, 54px);
+            opacity: 1;
             transition: all 0.3s ease;
             transform-origin: center;
             filter: grayscale(20%);
@@ -668,7 +689,10 @@
 
         .about-modal-book:hover {
             transform: translateY(-2px);
-            background: #333;
+            background: #ffffff;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 100px;
         }
 
         .about-modal-elsewhere {
@@ -687,11 +711,30 @@
             color: rgba(0, 0, 0, 0.7);
             text-decoration: none;
             font-size: clamp(0.8rem, 2vw, 0.9rem);
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.3em 0;
+        }
+
+        .about-modal-social a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: black;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
         }
 
         .about-modal-social a:hover {
             color: #000;
+        }
+
+        .about-modal-social a:hover::after {
+            transform: scaleX(1);
         }
 
         .overlay {
@@ -714,19 +757,19 @@
 
         @keyframes float {
             0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
+                transform: translate3d(0, 0, 0);
             }
             25% {
-                transform: translateY(-8px) translateX(5px) rotate(2deg);
+                transform: translate3d(5px, -8px, 0);
             }
             50% {
-                transform: translateY(-15px) translateX(0) rotate(4deg);
+                transform: translate3d(0, -15px, 0);
             }
             75% {
-                transform: translateY(-8px) translateX(-5px) rotate(2deg);
+                transform: translate3d(-5px, -8px, 0);
             }
             100% {
-                transform: translateY(0) translateX(0) rotate(0deg);
+                transform: translate3d(0, 0, 0);
             }
         }
 
@@ -834,38 +877,94 @@
             pointer-events: none;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            nav {
+                padding: 0.6rem;
+                margin: 0.75rem;
+                background: rgba(32, 32, 32, 0.95);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50px;
+            }
+
+            .nav-links {
+                position: static;
+                transform: none;
+                border: none;
+                padding: 0.4rem 0.6rem;
+                background: transparent;
+                box-shadow: none;
+                gap: 1rem;
+                flex: 1;
+                justify-content: center;
+            }
+
+            .logo img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                padding: 0.2rem 0.4rem;
+                text-align: center;
+            }
+
             .work-tags {
                 position: relative;
                 top: 0;
-                margin: 0 0 2rem;
+                right: auto;
+                margin-bottom: 2rem;
                 flex-direction: row;
-                flex-wrap: wrap;
-                align-items: flex-start;
+                align-items: center;
                 gap: 0.5rem;
             }
             
             .work-tag {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
+                font-size: 12px;
+                padding: 5px 12px;
             }
         }
 
-        @media (max-width: 576px) {
-            .contact h2, .hero h1 {
-                word-break: break-word;
-                hyphens: auto;
+        @media screen and (max-width: 576px) {
+            nav {
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
+
+            .nav-links {
+                padding: 0.3rem 0.5rem;
+                gap: 0.8rem;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .logo img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .work-tags {
+                margin-bottom: 1.5rem;
             }
             
-            .work-item h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
+            .work-tag {
+                font-size: 12px;
+                padding: 5px 10px;
             }
-            
-            .work-details {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-bottom: 2.5rem;
+        }
+
+        /* Enhanced hover effects */
+        .nav-links:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links:hover {
+                transform: none;
             }
         }
 
@@ -903,10 +1002,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             position: relative;
             height: 100vh;
-            justify-content: center;
             z-index: 2;
+            padding: 0 20px;
         }
 
         .welcome-title {
@@ -917,47 +1017,61 @@
             animation: slideUp 1s ease-out both;
             position: relative;
         }
-        
-        .welcome-title::after {
-            content: '';
-            position: absolute;
-            width: 120%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            bottom: -20px;
-            left: -10%;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.2s forwards;
-        }
-        
+
         .welcome-title h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 500;
             color: #fff;
             line-height: 1;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            
         }
-        
-        .welcome-title img {
-            height: clamp(3rem, 8vw, 5rem);
-            width: auto;
-            animation: pulse 2s infinite 0.3s;
-            filter: drop-shadow(0 0 10px rgba(255, 200, 0, 0.3));
-        }
-        
+
         .welcome-subtitle {
             font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: rgba(255, 255, 255, 0.4);
+            animation: fadeIn 2s ease-out 0.5s both;
+            letter-spacing: 0.05em;
             position: absolute;
-            bottom: 20%;
+            bottom: 15vh;
             left: 0;
             right: 0;
             text-align: center;
-            animation: fadeIn 2s ease-out 0.5s both;
-            letter-spacing: 0.05em;
+            white-space: nowrap;
+            width: 100%;
         }
-        
+
+        @media screen and (max-width: 768px) {
+            .welcome-content {
+                padding: 0 20px;
+                justify-content: space-between;
+            }
+
+            .welcome-title {
+                margin-top: 35vh;
+            }
+
+            .welcome-title h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .welcome-subtitle {
+                position: relative;
+                bottom: 15vh;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .welcome-title h1 {
+                font-size: clamp(2.2rem, 7vw, 3.5rem);
+            }
+            
+            .welcome-subtitle {
+                font-size: 0.85rem;
+                bottom: 15vh;
+            }
+        }
+
         .welcome-hidden {
             opacity: 0;
             visibility: hidden;
@@ -975,7 +1089,7 @@
         
         .work-item:hover .work-image {
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            
         }
 
         /* Add parallax scroll effect to work items */
@@ -1008,11 +1122,11 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(100, 100, 255, 0.1) 0%, transparent 70%);
+            background: black;
             bottom: -150px;
             right: -150px;
             border-radius: 50%;
-            filter: blur(50px);
+           
             animation: floatRotate 10s infinite;
             z-index: -1;
         }
@@ -1081,11 +1195,16 @@
             .contact h2 {
                 font-size: 48px;
             }
+            
+            #bombi {
+                width: 100px;
+                left: calc(20% + 8vw);
+            }
         }
         
         @media screen and (max-width: 768px) {
             .hero h1 {
-                font-size: 3.8rem;
+                font-size: clamp(2rem, 12vw, 8rem);
             }
             
             .hero p {
@@ -1094,22 +1213,22 @@
             }
             
             #heart-3d {
-                left: 2%;
+                left: 10%;
                 width: 80px;
             }
             
             #rubick-3d {
-                right: 2%;
+                right: 10%;
                 width: 90px;
             }
             
             #mouse-3d {
-                right: 2%;
+                right: 15%;
                 width: 90px;
             }
             
             #toggle-3d {
-                left: 2%;
+                left: 15%;
                 width: 80px;
             }
             
@@ -1132,35 +1251,49 @@
                 align-items: flex-start;
                 gap: 0.5rem;
             }
+            
+            #bombi {
+                width: 80px;
+                left: calc(15% + 5vw);
+            }
         }
         
         @media screen and (max-width: 576px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: clamp(1.8rem, 10vw, 6rem);
             }
             
             .hero p {
                 font-size: 14px;
             }
             
-            #heart-3d, #rubick-3d, #mouse-3d, #toggle-3d {
+            #heart-3d, #rubick-3d, #mouse-3d, #toggle-3d, #bombi{
                 transform: scale(0.7);
             }
             
             #heart-3d {
-                left: 50%;
+                left: 5%;
+                top: 60%;
             }
             
             #rubick-3d {
-                left: 48%;
+                right: 5%;
+                top: 30%;
             }
             
             #mouse-3d {
-                left: 45%;
+                right: 10%;
+                bottom: 30%;
             }
             
             #toggle-3d {
-                left: 30%;
+                left: 10%;
+                top: 25%;
+            }
+            #bombi {
+                transform: scale(0.7);
+                left: calc(10% + 3vw);
+                bottom: 25%;
             }
             
             .contact h2 {
@@ -1200,27 +1333,7 @@
             }
         }
 
-        /* Enhanced 3D object glow effects */
-        #heart-3d:hover, 
-        .floating-objects:hover #heart-3d {
-            filter: drop-shadow(0 0 30px rgba(255, 100, 255, 0.5));
-        }
-        
-        #rubick-3d:hover,
-        .floating-objects:hover #rubick-3d {
-            filter: drop-shadow(0 0 35px rgba(100, 255, 100, 0.5));
-        }
-        
-        #mouse-3d:hover,
-        .floating-objects:hover #mouse-3d {
-            filter: drop-shadow(0 0 35px rgba(100, 100, 255, 0.5));
-        }
-        
-        #toggle-3d:hover,
-        .floating-objects:hover #toggle-3d {
-            filter: drop-shadow(0 0 35px rgba(255, 255, 100, 0.5));
-        }
-        
+     
         /* Additional pulse animation for 3D objects */
         @keyframes objectPulse {
             0% {
@@ -1278,6 +1391,21 @@
                 overlay.addEventListener('click', closeAboutModal);
             }
             
+            // Add smooth scrolling to all navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
             if (scrollIndicator) {
                 scrollIndicator.addEventListener('click', () => {
                     worksSection.scrollIntoView({ 
@@ -1505,7 +1633,7 @@
 
     <nav>
         <div class="logo">
-            <img src="assets/Logo.svg" alt="Logo">
+            <img src="assets/Logo.svg" alt="Logo" onclick="window.location.reload()">
         </div>
         <div class="nav-links">
             <a href="#about" id="aboutLink">About</a>
@@ -1518,21 +1646,32 @@
     
     <div class="about-modal" id="aboutModal">
         <button class="about-modal-close" id="closeModal">Close</button>
-        <p>Hi, I'm a UI/UX Designer crafting seamless digital experiences. I turn ideas into intuitive, engaging, and beautifully designed products.</p>
-        <p>I collaborate with startups, agencies, and businesses to craft intuitive, high impact products and brands. Whether you're launching something new, refining an existing product, or scaling for the future, I design with purpose creating experiences that feel effortless and look stunning.</p>
+        <p style="font-size: 15px;">Hi, I'm a UI/UX Designer crafting seamless digital experiences. I turn ideas into intuitive, engaging, and beautifully designed products.</p>
+        <p style="font-size: 15px;">I collaborate with startups, agencies, and businesses to craft intuitive, high impact products and brands. Whether you're launching something new, refining an existing product, or scaling for the future, I design with purpose creating experiences that feel effortless and look stunning.</p>
         
         <div class="about-modal-worked">
             <h3>Worked With</h3>
             <div class="about-modal-logos">
-                <img class="wix" src="assets/wix.svg" alt="Wix">
-                <img class="hugetv" src="assets/hugetv.svg" alt="Mude">
-                <img class="mrkt" src="assets/mrkt.svg" alt="Eye">
-                <img class="redberry" src="assets/redberry.svg" alt="Rocket">
+                <a href="https://wix.com" target="_blank">
+                    <img class="wix" src="assets/wix.svg" alt="Wix">
+                </a>
+                <a href="https://huge.tv" target="_blank">
+                    <img class="hugetv" src="assets/hugetv.svg" alt="Mude">
+                </a>
+                <a href="https://mrkt.com" target="_blank">
+                    <img class="mrkt" src="assets/mrkt.svg" alt="Eye">
+                </a>
+                <a href="https://redberry.international" target="_blank">
+                    <img class="redberry" src="assets/redberry.svg" alt="Rocket">
+                </a>
+                <a href="https://spaceint.ge" target="_blank">
+                    <img class="spaceint" src="assets/space.svg" alt="Space INT">
+                </a>
             </div>
         </div>
         
         <div class="about-modal-cta">
-            <h2>Make something awesome together!</h2>
+            <h2 style="font-size: 25;">Make something awesome together!</h2>
             <a href="https://calendly.com/uchagulbani/product-design-ucha" class="about-modal-book">Book a call</a>
             <p class="about-modal-elsewhere">Find me elsewhere on web</p>
             <div class="about-modal-social">
@@ -1546,13 +1685,14 @@
 
     <section class="hero">
         <div class="floating-objects">
-            <img src="assets/Heart 3D.svg" alt="Heart 3D" id="heart-3d">
-            <img src="assets/Rubick 3D.svg" alt="Rubick 3D" id="rubick-3d">
-            <img src="assets/Mouse 3D.svg" alt="Mouse 3D" id="mouse-3d">
-            <img src="assets/Toggle 3D.svg" alt="Toggle 3D" id="toggle-3d">
+            <img src="assets/bombi.svg" alt="Heart 3D" id="heart-3d">
+            <img src="assets/ucxoplaneteli.svg" alt="Rubick 3D" id="rubick-3d">
+            <img src="assets/cecxli.svg" alt="Mouse 3D" id="mouse-3d">
+            <img src="assets/wveni.svg" alt="Toggle 3D" id="toggle-3d">
+             
         </div>
-        <h1>UCHA GULBANI</h1>
-        <p>User Interface & Experience Designer Based in Tbilisi, Georgia</p>
+        <h1 style="font-size: clamp(2.5rem, 15vw, 11rem);">UCHA GULBANI</h1>
+        <p style="font-size: clamp(1rem, 3vw, 2rem);">User Interface & Experience Designer Based in Tbilisi, Georgia</p>
         <div class="scroll-indicator" id="scrollIndicator">
             <img src="assets/arrow.svg" alt="Scroll Down">
         </div>
@@ -1561,7 +1701,7 @@
     <section class="works" id="works">
         <div class="works-grid">
             <div class="work-item">
-                <span class="work-number">01 /05</span>
+                <span class="work-number">01/05</span>
                 <h2>Short Term Video — Mobile UI & UX</h2>
                 <div class="work-details">
                     <div class="work-info">
@@ -1688,7 +1828,33 @@
 
     <footer class="contact" id="contact">
         <h2>Make something awesome together!</h2>
-        <a href="https://calendly.com/uchagulbani/product-design-ucha" class="book-call">Book a call</a>
+<style>
+.book-call-new {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 170px;
+    height: 54px;
+}
+
+.book-call-new:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    transform: translateY(-4px);
+}
+</style>
+
+<a href="https://calendly.com/uchagulbani/product-design-ucha" class="book-call-new">Book a call</a>
+<br><br><br>
         <p class="elsewhere">Find me elsewhere on web</p>
         <div class="social-links">
             <a href="https://dribbble.com/uchagulbani" target="_blank">Dribbble</a>
@@ -1703,4 +1869,5 @@
     </div>
 </body>
 </html>
+
 
