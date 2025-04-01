@@ -100,17 +100,17 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            padding: 0 32px;
+            padding: 0 20px;
             overflow: hidden;
             box-sizing: border-box;
             width: 100%;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 15vw, 11rem);
+            font-size: clamp(2.5rem, 18vw, 14rem);
             font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
             text-align: center;
             width: 100%;
             line-height: 0.9;
@@ -118,28 +118,57 @@
             position: relative;
             z-index: 2;
             text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-            padding: 0 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            max-width: 90%;
-            width: 600px;
-            letter-spacing: 0.02em;
-            animation: slideUp 1s ease-out 0.7s both;
+            padding: 0;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .hero-description {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0;
             color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1rem, 2.5vw, 1.6rem) !important;
+            margin-top: 0.5rem;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+
+        @media screen and (min-width: 992px) {
+            .hero-description {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        @media screen and (max-width: 991px) {
+            .hero-description {
+                white-space: normal;
+                overflow: visible;
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                margin-bottom: 1rem;
+                font-size: clamp(6rem, 12vw, 8rem);
+            }
+            
+            .hero-description {
+                font-size: 20px !important;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero h1 {
+                white-space: normal;
+                overflow: visible;
+                margin-bottom: 0.6rem;
+                font-size: clamp(3.5rem, 10vw, 6rem);
+            }
         }
 
         .floating-objects {
@@ -161,65 +190,55 @@
             transform-style: preserve-3d;
             backface-visibility: hidden;
             will-change: transform;
-            width: clamp(80px, 12vw, 175px);
+            width: clamp(60px, 10vw, 90px);
         }
 
         #heart-3d {
-            left: clamp(5%, 20%, 25%);
-            top: clamp(50%, 65%, 70%);
-            width: 115px;
-            animation: float 8s ease-in-out infinite, fadeIn 1s ease-out 0.2s both;
+            left: 20%;
+            top: 15%;
+            width: 165px;
+            animation: float 6s ease-in-out infinite, fadeIn 1s ease-out 0.2s both;
             transform-origin: center center;
-           
             z-index: 3;
         }
 
         #rubick-3d {
-            right: clamp(5%, 28%, 35%);
-            top: clamp(20%, 25%, 30%);
-            width: 115px;
-            animation: float 9s ease-in-out infinite, fadeIn 1s ease-out 0.4s both;
+            right: 15%;
+            top: 15%;
+            width: 165px;
+            animation: float 7s ease-in-out infinite, fadeIn 1s ease-out 0.4s both;
             animation-delay: -2s, 0.4s;
             transform-origin: center center;
-            
             z-index: 3;
         }
 
         #mouse-3d {
-            right: clamp(5%, 25%, 30%);
-            bottom: clamp(15%, 20%, 25%);
-            width: 115px;
-            animation: float 10s ease-in-out infinite, fadeIn 1s ease-out 0.6s both;
+            right: 25%;
+            bottom: 15%;
+            width: 165px;
+            animation: float 8s ease-in-out infinite, fadeIn 1s ease-out 0.6s both;
             animation-delay: -1s, 0.6s;
             transform-origin: center center;
-            
             z-index: 3;
         }
 
         #toggle-3d {
-            left: clamp(5%, 30%, 35%);
-            top: clamp(15%, 22%, 25%);
-            width: 115px;
-            animation: float 11s ease-in-out infinite, fadeIn 1s ease-out 0.8s both;
+            left: 30%;
+            bottom: 18%;
+            width: 165px;
+            animation: float 9s ease-in-out infinite, fadeIn 1s ease-out 0.8s both;
             animation-delay: -3s, 0.8s;
             transform-origin: center center;
-            
             z-index: 3;
         }
         
         #bombi {
-            left: calc(25% + 10vw);
-            bottom: clamp(10%, 15%, 20%);
-            width: 115px;
-            animation: float 11s ease-in-out infinite, fadeIn 1s ease-out 0.8s both;
-            animation-delay: -3s, 0.8s;
-            transform-origin: center center;
-            
-            z-index: 3;
+            display: none;
         }
 
         .works {
             padding: clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 3rem);
+            margin-top: 2rem;
         }
 
         .works-grid {
@@ -233,6 +252,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            margin-bottom: 2rem;
         }
 
         .work-item.visible {
@@ -246,10 +266,10 @@
             letter-spacing: 0.05em;
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .work-number::before {
-           
             color: rgba(255, 255, 255, 1);
         }
 
@@ -257,10 +277,11 @@
             content: "/05";
             color: rgba(255, 255, 255, 0.4);
         }
+        
         .work-item h2 {
-            font-size: 3.2rem;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 600;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             letter-spacing: -0.02em;
             line-height: 1.1;
             opacity: 0;
@@ -271,7 +292,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             max-width: 600px;
             opacity: 0;
             animation: slideInLeft 0.6s ease-out 0.2s forwards;
@@ -285,14 +306,15 @@
 
         .work-info span:first-child {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .work-info span:last-child {
             color: #fff;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 400;
         }
 
         .work-tags {
@@ -309,9 +331,9 @@
 
         .work-tag {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
+            font-size: 12px;
             background: rgb(30, 30, 30);
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 100px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -344,21 +366,29 @@
         }
 
         .work-item:hover .work-image img, .work-item:hover > img {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            filter: brightness(1.1);
+            transform: none;
+            box-shadow: none;
+            filter: none;
         }
         
         .work-item:hover h2 {
             color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
+            text-shadow: none;
+            transform: none;
         }
 
         .work-item:hover .work-tag {
-            background: rgba(60, 60, 60, 0.95);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: rgb(30, 30, 30);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .work-item:hover .work-image::after, .work-item:hover > img::after {
+            opacity: 0;
+        }
+        
+        .work-item:hover .work-image {
+            transform: none;
         }
 
         /* Add glow effect on hover */
@@ -413,7 +443,7 @@
         }
 
         .contact {
-            padding: 8rem 3rem 4rem;
+            padding: 7rem 3rem 4rem;
             min-height: auto;
             display: flex;
             flex-direction: column;
@@ -433,11 +463,11 @@
         }
 
         .contact h2 {
-            font-size: 62px;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 500;
             letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 3rem;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             animation: slideInLeft 0.8s ease-out both;
             color: #ffffff;
@@ -515,14 +545,15 @@
         }
         .elsewhere {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 16px;
-            margin-bottom: 1.5rem;
+            font-size: 15px;
+            margin-bottom: 1.2rem;
             letter-spacing: 0.02em;
         }
 
         .social-links {
             display: flex;
-            gap: 2.5rem;
+            flex-direction: row;
+            gap: 2rem;
             margin-bottom: 1rem;
             flex-wrap: wrap;
         }
@@ -531,10 +562,11 @@
             position: relative;
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
             opacity: 0.7;
             padding: 0.3em 0;
+            display: inline-block;
         }
 
         .social-links a::after {
@@ -556,7 +588,7 @@
         .social-links a:hover::after {
             width: 100%;
         }
-
+        
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -601,12 +633,11 @@
             top: 0;
             right: -100%;
             width: clamp(280px, 90%, 500px);
-            height: auto;
-            max-height: 100vh;
+            height: 100vh;
             background: #fff;
             color: #000;
             z-index: 2000;
-            overflow: hidden;
+            overflow-y: auto;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             padding: clamp(1.5rem, 5vw, 3rem);
             display: flex;
@@ -643,26 +674,26 @@
         .about-modal p {
             font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             line-height: 1.6;
-            color: rgba(0, 0, 0, 0.8);
+            color: rgb(0, 0, 0);
             margin-bottom: clamp(1rem, 3vw, 1.5rem);
         }
 
         .about-modal-worked {
-            margin-top: clamp(1.5rem, 5vw, 3rem);
-            margin-bottom: clamp(2rem, 6vw, 4rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
         }
 
         .about-modal-worked h3 {
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
             font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
+            color: rgb(0, 0, 0);
             margin-bottom: clamp(1rem, 3vw, 1.5rem);
         }
 
         .about-modal-logos {
             display: flex;
             flex-wrap: wrap;
-            gap: clamp(1rem, 3vw, 1.5rem);
+            gap: clamp(0.6rem, 2vw, 1rem);
             align-items: center;
         }
 
@@ -682,8 +713,8 @@
         }
 
         .about-modal-cta {
-            margin-top: auto;
-            padding-top: clamp(2rem, 6vw, 4rem);
+            margin-top: 0;
+            padding-top: clamp(1rem, 3vw, 2rem);
         }
 
         .about-modal-cta h2 {
@@ -701,40 +732,37 @@
         }
 
         .about-modal-book {
-            display: fixed;
+            display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 32px;
+            padding: 12px 28px;
     background-color: #000;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 100px;
     text-decoration: none;
-   
-  
-   
-          
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            transition: all 0.3s ease;
+            width: fit-content;
         }
 
         .about-modal-book:hover {
             background: #ffffff;
             color: #000;
             border: 1px solid rgb(0, 0, 0);
-            border-radius: 100px;
-          
-            
         }
 
         .about-modal-elsewhere {
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(0, 0, 0, 0.336);
             font-size: clamp(0.75rem, 2vw, 0.85rem);
+            font-weight: 400;
             margin-bottom: clamp(0.8rem, 2vw, 1rem);
         }
 
         .about-modal-social {
-            display: flex;
-            gap: clamp(1rem, 2.5vw, 1.5rem);
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         .about-modal-social a {
@@ -751,38 +779,111 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 50px;
             height: 1px;
             background: black;
             transform: scaleX(0);
-            transform-origin: center;
+            transform-origin: left;
             transition: transform 0.3s ease;
-        }
-
-        .about-modal-social a:hover {
-            color: #000;
         }
 
         .about-modal-social a:hover::after {
             transform: scaleX(1);
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1500;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+        .about-modal-social a:hover {
+            color: #000;
+            opacity: 1;
         }
 
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
+        /* Mobile modal styles */
+        @media screen and (max-width: 768px) {
+            .about-modal {
+            width: 100%;
+                padding: clamp(1.2rem, 4vw, 2rem);
+            height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            .about-modal-close {
+                margin-bottom: 1.5rem;
+            }
+            
+            .about-modal p {
+                font-size: 15px;
+                margin-bottom: 1rem;
+            }
+            
+            .about-modal-worked {
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .about-modal-cta {
+                margin-top: auto;
+                padding-top: 2rem;
+                padding-bottom: 1rem;
+            }
+            
+            .about-modal-cta h2 {
+                font-size: 22px;
+            }
+            
+            .about-modal-book {
+                width: 100%;
+                padding: 12px 20px;
+                text-align: center;
+                font-size: 15px;
+            }
+
+            .about-modal-social {
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .about-modal {
+                padding: 1rem;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+            
+            .about-modal-close {
+                padding: 0.3rem 1rem;
+                font-size: 14px;
+                margin-bottom: 1rem;
+            }
+            
+            .about-modal p {
+                font-size: 14px;
+            }
+            
+            .about-modal-worked h3 {
+                font-size: 14px;
+            }
+            
+            .about-modal-social {
+                gap: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .about-modal-social a {
+                font-size: 14px;
+            }
+            
+            .about-modal-cta {
+                margin-top: auto;
+                padding-bottom: 10px;
+            }
+            
+            .about-modal-cta h2 {
+                font-size: 18px;
+            }
         }
 
         @keyframes float {
@@ -897,7 +998,7 @@
         }
 
         .work-item:hover > img {
-            transform: scale(1.02);
+            transform: none;
         }
 
         /* Hide scroll indicator when it's out of viewport */
@@ -930,12 +1031,12 @@
             }
 
             .logo img {
-                width: 28px;
-                height: 28px;
+                width: 32px;
+                height: 32px;
             }
 
             .nav-links a {
-                font-size: 18px;
+                font-size: 16px;
                 padding: 0.2rem 0.4rem;
                 text-align: center;
             }
@@ -948,11 +1049,12 @@
                 flex-direction: row;
                 align-items: center;
                 gap: 0.5rem;
+                flex-wrap: wrap;
             }
             
             .work-tag {
-                font-size: 12px;
-                padding: 5px 12px;
+                font-size: 11px;
+                padding: 5px 10px;
             }
             
             .hero {
@@ -960,17 +1062,53 @@
             }
             
             .hero-description {
-                font-size: 16px !important;
+                font-size: 20px !important;
                 padding: 0 10px;
             }
             
             #heart-3d, #rubick-3d, #mouse-3d, #toggle-3d, #bombi {
-                transform: scale(0.8);
+                transform: scale(0.10);
             }
             
             .hero h1 {
                 margin-bottom: 1rem;
-                font-size: clamp(2rem, 10vw, 4.5rem);
+                font-size: clamp(6rem, 12vw, 8rem);
+            }
+            
+            .work-item {
+                padding: 3rem 0;
+            }
+            
+            .work-item h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .work-details {
+                grid-template-columns: repeat(2, 1fr);
+                margin-bottom: 2.5rem;
+            }
+            
+            .contact h2 {
+                font-size: 2.2rem;
+            }
+            
+            .book-call-new {
+                width: 150px;
+                height: 48px;
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            
+            /* Make social links vertical on mobile */
+            .social-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .social-links a {
+                display: block;
             }
         }
 
@@ -986,7 +1124,7 @@
             }
 
             .nav-links a {
-                font-size: 16px;
+                font-size: 15px;
                 padding: 0.2rem 0.3rem;
             }
 
@@ -1000,19 +1138,46 @@
             }
             
             .work-tag {
-                font-size: 12px;
-                padding: 5px 10px;
+                font-size: 11px;
+                padding: 4px 10px;
             }
             
             .hero-description {
-                font-size: 14px !important;
+                font-size: 13px !important;
                 max-width: 100%;
+                letter-spacing: 0;
             }
             
             .hero h1 {
-                white-space: nowrap;
-                overflow: hidden;
-                margin-bottom: 1rem;
+                white-space: normal;
+                overflow: visible;
+                margin-bottom: 0.6rem;
+                font-size: clamp(3.5rem, 10vw, 6rem);
+            }
+            
+            .work-item h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .contact h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .book-call-new {
+                width: 140px;
+                height: 44px;
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .social-links a {
+                font-size: 14px;
+            }
+            
+            .elsewhere {
+                font-size: 14px;
             }
         }
 
@@ -1051,7 +1216,7 @@
             height: 200vh;
             top: -50vh;
             left: -50vw;
-            background: radial-gradient(circle, rgba(40, 40, 40, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            background: black;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 0.5s forwards;
         }
@@ -1147,8 +1312,7 @@
         }
         
         .work-item:hover .work-image {
-            transform: scale(1.02);
-            
+            transform: none;
         }
 
         /* Add parallax scroll effect to work items */
@@ -1192,9 +1356,15 @@
 
         /* Additional tilt effect script */
         .tilt-element {
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
-            will-change: transform, box-shadow;
+            transform-style: initial !important;
+            transition: none !important;
+            will-change: auto !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .tilt-element img {
+            filter: none !important;
         }
 
         /* Enhanced responsive styles */
@@ -1327,40 +1497,39 @@
         
         @media screen and (max-width: 576px) {
             .hero h1 {
-                font-size: clamp(1.8rem, 10vw, 6rem);
+                font-size: clamp(3rem, 8vw, 4rem);
+                white-space: normal;
+                overflow: visible;
+                margin-bottom: 0.6rem;
             }
             
-            .hero p {
-                font-size: 14px;
-            }
+            .hero-description {
+                font-size: clamp(0.7rem, 1.5vw, 1rem) !important;
             
-            #heart-3d, #rubick-3d, #mouse-3d, #toggle-3d, #bombi{
-                transform: scale(0.7);
             }
             
             #heart-3d {
-                left: 5%;
-                top: 60%;
+                left: 10%;
+                top: 25%;
+                width: 85px;
             }
             
             #rubick-3d {
-                right: 5%;
-                top: 30%;
+                right: 10%;
+                top: 20%;
+                width: 85px;
             }
             
             #mouse-3d {
-                right: 10%;
+                right: 15%;
                 bottom: 30%;
+                width: 85px;
             }
             
             #toggle-3d {
-                left: 10%;
-                top: 25%;
-            }
-            #bombi {
-                transform: scale(0.7);
-                left: calc(10% + 3vw);
-                bottom: 25%;
+                left: 15%;
+                bottom: 20%;
+                width: 85px;
             }
             
             .contact h2 {
@@ -1398,8 +1567,36 @@
                 gap: 1.5rem;
                 margin-bottom: 2.5rem;
             }
-        }
+            
+            nav {
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
 
+            .nav-links {
+                padding: 0.3rem 0.5rem;
+                gap: 0.8rem;
+            }
+
+            .nav-links a {
+                font-size: 15px;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .logo img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .work-tags {
+                margin-bottom: 1.5rem;
+            }
+            
+            .work-tag {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+        }
      
         /* Additional pulse animation for 3D objects */
         @keyframes objectPulse {
@@ -1445,41 +1642,14 @@
             }
         }
 
-        @media screen and (max-width: 576px) {
-            .work-item {
-                padding: 2rem 0;
-            }
-            
-            .work-number {
-                margin-bottom: 1rem;
-            }
-            
-            .contact {
-                padding: 5rem 1rem 3rem;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-            
-            .book-call-new {
-                width: 140px;
-                height: 46px;
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-        }
-        
         /* Extra small devices */
         @media screen and (max-width: 480px) {
             .hero h1 {
-                font-size: clamp(1.5rem, 8vw, 4rem);
+                font-size: clamp(2.5rem, 10vw, 5rem);
             }
             
             .hero-description {
-                font-size: 12px !important;
+                font-size: 15px !important;
                 letter-spacing: 0;
             }
             
@@ -1511,6 +1681,59 @@
                 transform: scale(0.6);
             }
         }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .book-call-new {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            width: 160px;
+            height: 50px;
+            letter-spacing: 0.02em;
+        }
+
+        .book-call-new:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Mobile and tablet navigation styling */
+        @media screen and (max-width: 991px) {
+            .nav-links {
+                background: #222222;
+              
+                
+            }
+            
+            .nav-links a {
+                color: white;
+            }
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1523,6 +1746,19 @@
             setTimeout(() => {
                 welcomeScreen.classList.add('welcome-hidden');
                 document.body.style.overflow = 'auto'; // Enable scrolling
+                
+                // Add scale animation to 3D objects after welcome screen
+                const floatingObjects = document.querySelectorAll('.floating-objects img');
+                floatingObjects.forEach(obj => {
+                    // Start with zero size
+                    obj.style.transform = 'scale(0)';
+                    obj.style.transition = 'transform 1.8s ease-out';
+                    
+                    // Grow to normal size after a short delay
+                    setTimeout(() => {
+                        obj.style.transform = '';
+                    }, 100);
+                });
             }, 2500); // Show welcome screen for 2.5 seconds
             
             // About modal functionality
@@ -1709,38 +1945,9 @@
                 // Add tilt-element class to all work images
                 element.classList.add('tilt-element');
                 
-                element.addEventListener('mousemove', (e) => {
-                    const rect = element.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const xPercent = x / rect.width;
-                    const yPercent = y / rect.height;
-                    
-                    const rotateX = (0.5 - yPercent) * 10; // -5 to 5 degrees
-                    const rotateY = (xPercent - 0.5) * 10; // -5 to 5 degrees
-                    
-                    // Remove any transform from the parallax effect before applying tilt
-                    element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-                    
-                    // Add a dynamic shadow based on mouse position
-                    const shadowX = (0.5 - xPercent) * 20;
-                    const shadowY = (0.5 - yPercent) * 20;
-                    element.style.boxShadow = `${shadowX}px ${shadowY}px 30px rgba(0, 0, 0, 0.3)`;
-                    
-                    // Add a dynamic highlight effect
-                    const highlightX = xPercent * 100;
-                    const highlightY = yPercent * 100;
-                    const img = element.querySelector('img') || element;
-                    img.style.filter = `brightness(1.1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.2))`;
-                });
-                
-                element.addEventListener('mouseleave', () => {
-                    element.style.transform = '';
-                    element.style.boxShadow = '';
-                    const img = element.querySelector('img') || element;
-                    img.style.filter = '';
-                });
+                // Remove all mousemove event listeners by setting the below functions empty
+                element.addEventListener('mousemove', () => {});
+                element.addEventListener('mouseleave', () => {});
             });
             
             // Book call button hover effect
@@ -1836,7 +2043,7 @@
         </div>
         
         <div class="about-modal-cta">
-            <h2 style="font-size: 25;">Make something awesome together!</h2>
+            <h2 style="font-size: 25; font-weight: 400;">Make something<br>awesome together!</h2>
             <br>
             <a href="https://calendly.com/uchagulbani/product-design-ucha" class="about-modal-book">Book a call</a>
             <br><br> <br>
@@ -1853,13 +2060,12 @@
     <section class="hero">
         <div class="floating-objects">
             <img src="assets/bombi.svg" alt="Heart 3D" id="heart-3d">
-            <img src="assets/ucxoplaneteli.svg" alt="Rubick 3D" id="rubick-3d">
-            <img src="assets/cecxli.svg" alt="Mouse 3D" id="mouse-3d">
-            <img src="assets/wveni.svg" alt="Toggle 3D" id="toggle-3d">
-             
+            <img src="assets/ucxoplaneteli.svg" alt="Alien 3D" id="rubick-3d">
+            <img src="assets/cecxli.svg" alt="Fire 3D" id="mouse-3d">
+            <img src="assets/wveni.svg" alt="Bomb 3D" id="toggle-3d">
         </div>
-<h1 style="font-size: clamp(3rem, 15vw, 15rem); white-space: nowrap; text-align: center; overflow: visible; letter-spacing: -0.02em;">UCHA GULBANI</h1>
-        <p class="hero-description" style="font-size: clamp(1rem, 3vw, 2rem);">User Interface & Experience Designer Based in Tbilisi, Georgia</p>
+        <h1>UCHA GULBANI</h1>
+        <p class="hero-description">User Interface & Experience Designer Based in Tbilisi, Georgia</p>
         <div class="scroll-indicator" id="scrollIndicator">
             <img src="assets/arrow.svg" alt="Scroll Down">
         </div>
@@ -1994,30 +2200,7 @@
     </section>
 
     <footer class="contact" id="contact">
-        <h2>Make something awesome together!</h2>
-<style>
-.book-call-new {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 100px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    width: 170px;
-    height: 54px;
-}
-
-.book-call-new:hover {
-    background: #fff;
-    color: #000;
-}
-</style>
-
+        <h2>Make something<br>awesome together!</h2>
 <a href="https://calendly.com/uchagulbani/product-design-ucha" class="book-call-new">Book a call</a>
 <br><br><br>
         <p class="elsewhere">Find me elsewhere on web</p>
